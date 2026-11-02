@@ -13,16 +13,18 @@ public class DoctorResponseDto {
     private String lastName;
     private String phone;
     private String email;
-    private String splz;
+    private String specialisation;
     private int deptId;
+    private String deptName;
+    private String deptLocation;
     private LocalDate joinDate;
     private BigDecimal consultationFee;
     private EmploymentStatus status;
+
+
     public Long getDoctorId() {
         return doctorId;
     }
-
-
     
     public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
@@ -51,11 +53,11 @@ public class DoctorResponseDto {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getSplz() {
-        return splz;
+    public String getSpecialisation() {
+        return specialisation;
     }
-    public void setSplz(String splz) {
-        this.splz = splz;
+    public void setSecialization(String splz) {
+        this.specialisation = splz;
     }
     public int getDeptId() {
         return deptId;
@@ -63,6 +65,23 @@ public class DoctorResponseDto {
     public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
+
+    public String getDeptName(String deptName){
+        return this.deptName;
+    }
+
+    public void setDeptName(String deptName){
+        this.deptName = deptName;
+    }
+
+    public String getDeptLocation(String deptLocation){
+        return this.deptLocation;
+    }
+
+    public void setDeptLocation(String deptLocation){
+        this.deptLocation = deptLocation;
+    }
+
     public LocalDate getJoinDate() {
         return joinDate;
     }
