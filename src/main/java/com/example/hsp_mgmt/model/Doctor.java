@@ -1,7 +1,5 @@
 package com.example.hsp_mgmt.model;
 
-import java.util.*;
-
 import com.example.hsp_mgmt.model.enums.Gender;
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 import java.math.BigDecimal;
