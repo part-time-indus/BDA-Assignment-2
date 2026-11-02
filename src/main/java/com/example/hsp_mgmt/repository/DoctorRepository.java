@@ -34,7 +34,7 @@ Optional<Doctor> findBySpecialisationIgnoreCase(String specialisation);
 
 // Get list of doctors from a particular department using department Id
 
-@Query("SELECT d FROM Doctor d WHERE d.department.depId = :deptId")
+@Query("SELECT d FROM Doctor d WHERE d.department.deptId = :deptId")
 List<Doctor> findDeptId(@Param("deptId") Long deptId);
 
 // Get list of doctors along with their department information
@@ -66,7 +66,7 @@ int updateDoctorStatus(@Param("doctorId") Long docId, @Param("status")Employment
 // change doctor fee
 
 @Modifying(clearAutomatically = true, flushAutomatically = true)
-@Query("Update Doctor d SET d.fee = :fee WHERE d.doctorId = :docId")
+@Query("Update Doctor d SET d.consultationFee = :fee WHERE d.doctorId = :docId")
 int updateDoctorStatus(@Param("doctorId") Long docId, @Param("fee") BigDecimal fee);
 
 
