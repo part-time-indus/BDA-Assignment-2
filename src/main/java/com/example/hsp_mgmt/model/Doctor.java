@@ -91,14 +91,6 @@ public class Doctor {
     private EmploymentStatus status = EmploymentStatus.ACTIVE;
 
 
-    //----------------------------------Only Getters------------------------------------
-
-
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<DoctorAvailability> doctorAvailability = new ArrayList<>();
-
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<Appointment> appointments = new ArrayList<>();
 
     //----------------------------------Constructor--------------------------------------
     
@@ -227,18 +219,6 @@ public class Doctor {
     public void setStatus(EmploymentStatus status) {
         this.status = status;
     }
-
-
-    public List<DoctorAvailability> getDoctorAvailability() {
-        return doctorAvailability;
-    }
-
-
-
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
 
 
     //----------------------------------Getters & Setters--------------------------------
