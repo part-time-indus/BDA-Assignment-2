@@ -1,5 +1,6 @@
 package com.example.hsp_mgmt.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import com.example.hsp_mgmt.model.enums.Gender;
 
@@ -39,6 +40,8 @@ public class DoctorRequestDto {
     @NotNull(message = "Join Date is required")
     private LocalDate joinDate;
 
+    @NotNull(message = "Consultation fee is required")
+    private BigDecimal consultationFee = new BigDecimal(500.00);
     
     public DoctorRequestDto() {
     }
@@ -121,6 +124,14 @@ public class DoctorRequestDto {
 
     public void setJoinDate(LocalDate joinDate) {
         this.joinDate = joinDate;
+    }
+
+    public BigDecimal getConsultationFee(){
+        return this.consultationFee;
+    }
+
+    public void setConsultationFee(BigDecimal fee){
+        this.consultationFee = fee;
     }
 
 
