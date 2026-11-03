@@ -30,7 +30,7 @@ Optional<Doctor> findByEmailIgnoreCase(String email);
 
 // Look up doctor by specialization
 
-Optional<Doctor> findBySpecialisationIgnoreCase(String specialisation);
+List<Doctor> findBySpecialisationIgnoreCase(String specialisation);
 
 // Get list of doctors from a particular department using department Id
 
