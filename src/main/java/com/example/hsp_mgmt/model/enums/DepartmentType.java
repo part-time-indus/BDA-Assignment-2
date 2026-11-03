@@ -19,7 +19,17 @@ public enum DepartmentType {
         }
         public String getDeptName() {
             return deptName;
-        }     
+        }    
+        
+        public static DepartmentType fromDeptName(String deptName){
+            for(DepartmentType t: DepartmentType.values()){
+                if(t.deptName.equals(deptName)){
+                    return t;
+                }
+            }
+
+            throw new IllegalArgumentException("Unknown deptName " + deptName );
+        }
 
         
 }
