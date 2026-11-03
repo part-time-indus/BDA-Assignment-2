@@ -14,7 +14,7 @@ public class DoctorResponseDto {
     private String phone;
     private String email;
     private String specialisation;
-    private int deptId;
+    private Long deptId;
     private String deptName;
     private String deptLocation;
     private LocalDate joinDate;
@@ -59,10 +59,10 @@ public class DoctorResponseDto {
     public void setSecialization(String splz) {
         this.specialisation = splz;
     }
-    public int getDeptId() {
+    public Long getDeptId() {
         return deptId;
     }
-    public void setDeptId(int deptId) {
+    public void setDeptId(Long deptId) {
         this.deptId = deptId;
     }
 
