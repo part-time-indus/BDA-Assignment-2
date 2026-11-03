@@ -43,11 +43,11 @@ public interface DoctorService {
 
     //Update operations
 
-    void updateDoctorStatus(Long doctorId, EmploymentStatus status);
+    DoctorResponseDto updateDoctorStatus(Long doctorId, EmploymentStatus status);
 
-    void updateConsultationFee(Long doctorId, BigDecimal fee);
+    DoctorResponseDto updateConsultationFee(Long doctorId, BigDecimal fee);
 
-    void changeDoctorDepartment(Long doctorId, Long newDeptId);
+    DoctorResponseDto changeDoctorDepartment(Long doctorId, Long newDeptId);
 
 
 }
