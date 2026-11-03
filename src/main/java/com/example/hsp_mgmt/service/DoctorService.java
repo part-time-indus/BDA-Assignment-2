@@ -3,14 +3,13 @@ package com.example.hsp_mgmt.service;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 import com.example.hsp_mgmt.dto.DoctorRequestDto;
 import com.example.hsp_mgmt.dto.DoctorResponseDto;
 import com.example.hsp_mgmt.model.enums.DepartmentType;
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 
 
-@Service 
+ 
 public interface DoctorService {
 
     //CRUD operations
