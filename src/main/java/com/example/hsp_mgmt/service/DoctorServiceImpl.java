@@ -3,8 +3,8 @@ package com.example.hsp_mgmt.service;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.example.hsp_mgmt.dto.DepartmentRequestDto;
-import com.example.hsp_mgmt.dto.DepartmentResponseDto;
+import org.springframework.stereotype.Service;
+
 import com.example.hsp_mgmt.dto.DoctorRequestDto;
 import com.example.hsp_mgmt.dto.DoctorResponseDto;
 import com.example.hsp_mgmt.model.Department;
@@ -14,6 +14,8 @@ import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 import com.example.hsp_mgmt.repository.DepartmentRepository;
 import com.example.hsp_mgmt.repository.DoctorRepository;
 
+
+@Service 
 public class DoctorServiceImpl implements DoctorService {
     
     // CRUD operations
