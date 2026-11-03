@@ -36,7 +36,7 @@ public interface DepartmentService {
 
 
     // Update operations
-    void updateDepartmentLocation(Long deptId, String location);
+    DepartmentResponseDto updateDepartmentLocation(Long deptId, String location);
 
-    void updateDepartmentPhone(Long deptId, String phone);
+    DepartmentResponseDto updateDepartmentPhone(Long deptId, String phone);
 }
