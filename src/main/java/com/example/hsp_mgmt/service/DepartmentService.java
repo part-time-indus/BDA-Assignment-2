@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.hsp_mgmt.dto.DepartmentRequestDto;
 import com.example.hsp_mgmt.dto.DepartmentResponseDto;
+import com.example.hsp_mgmt.model.enums.DepartmentType;
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 
 public interface DepartmentService {
@@ -21,7 +22,7 @@ public interface DepartmentService {
 
 
     // Search operations
-    DepartmentResponseDto getDepartmentByName(String deptName);
+    DepartmentResponseDto getDepartmentByName(DepartmentType dept);
 
     List<DepartmentResponseDto> getDepartmentsByLocation(String location);
 
