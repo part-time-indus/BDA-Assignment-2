@@ -16,9 +16,9 @@ import jakarta.transaction.Transactional;
 @Transactional 
 public class PopulateData implements CommandLineRunner{
    
-    private DepartmentRepository deptRepo;
+    private final DepartmentRepository deptRepo;
 
-    private DoctorRepository docRepo;
+    private final DoctorRepository docRepo;
 
     PopulateData(DepartmentRepository deptRepo, DoctorRepository docRepo){
         this.deptRepo = deptRepo;
