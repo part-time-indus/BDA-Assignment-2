@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.example.hsp_mgmt.dto.DoctorRequestDto;
 import com.example.hsp_mgmt.dto.DoctorResponseDto;
+import com.example.hsp_mgmt.model.enums.DepartmentType;
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 
 
@@ -36,7 +37,7 @@ public interface DoctorService {
 
     List<DoctorResponseDto> getDoctorsByDepartment(Long deptId);
 
-    List<DoctorResponseDto> getDoctorsByDepartmentName(String deptName);
+    List<DoctorResponseDto> getDoctorsByDepartmentName(DepartmentType dept);
 
     List<DoctorResponseDto> getDoctorsByDepartmentAndStatus(Long deptId, EmploymentStatus status);
 
