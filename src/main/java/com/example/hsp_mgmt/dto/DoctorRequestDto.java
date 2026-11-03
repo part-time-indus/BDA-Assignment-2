@@ -2,6 +2,8 @@ package com.example.hsp_mgmt.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 import com.example.hsp_mgmt.model.enums.Gender;
 
 import jakarta.validation.constraints.Email;
@@ -42,6 +44,9 @@ public class DoctorRequestDto {
 
     @NotNull(message = "Consultation fee is required")
     private BigDecimal consultationFee = new BigDecimal(500.00);
+
+    @NotNull(message = "Status is required")
+    private EmploymentStatus status = EmploymentStatus.ACTIVE;
     
     public DoctorRequestDto() {
     }
@@ -132,6 +137,14 @@ public class DoctorRequestDto {
 
     public void setConsultationFee(BigDecimal fee){
         this.consultationFee = fee;
+    }
+
+    public EmploymentStatus getStatus(){
+        return this.status;
+    }
+
+    public void setStatu(EmploymentStatus status){
+        this.status = status;
     }
 
 
