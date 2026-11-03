@@ -63,7 +63,7 @@ public class Doctor {
     @Size(max = 80)
     private String email;
 
-    @Column(nullable = false, unique = true, length = 60)
+    @Column(nullable = false, length = 60)
     @NotNull 
     @Size(max=60)
     private String specialisation;
