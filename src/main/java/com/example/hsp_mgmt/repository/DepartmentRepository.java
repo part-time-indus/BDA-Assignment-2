@@ -14,10 +14,6 @@ import java.util.Optional;
 
 public interface DepartmentRepository extends JpaRepository<Department,Long>{
     
-// find department information using its Id
-
-Optional<Department> findByDeptId(String deptId);
-
 // find department information using its name
 
 Optional<Department> findByDeptNameIgnoreCase(String deptName);
