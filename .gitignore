@@ -32,6 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
+/BDA-Assignment-2.code-workspace
 
 ### Application properties ###
 /target/classes/applictaion.properties
