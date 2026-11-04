@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.example.hsp_mgmt.dto.DepartmentRequestDto;
 import com.example.hsp_mgmt.dto.DepartmentResponseDto;
 import com.example.hsp_mgmt.model.Department;
-import com.example.hsp_mgmt.model.enums.DepartmentType;
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 import com.example.hsp_mgmt.repository.DepartmentRepository;
 
@@ -78,9 +77,9 @@ public class DepartmentServiceImpl implements DepartmentService{
     // Search operations
 
     @Override 
-    public DepartmentResponseDto getDepartmentByName(DepartmentType deptType){
-        Department dept = deptRepo.findByDeptNameIgnoreCase(deptType.getDeptName()).
-                          orElseThrow(() -> new RuntimeException("Department " + deptType.getDeptName() + " not found" ));
+    public DepartmentResponseDto getDepartmentByName(String deptName){
+        Department dept = deptRepo.findByDeptNameIgnoreCase(deptName).
+                          orElseThrow(() -> new RuntimeException("Department " + deptName + " not found" ));
         return toDto(dept);
     }
 

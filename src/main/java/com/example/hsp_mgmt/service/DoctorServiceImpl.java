@@ -130,13 +130,12 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public List<DoctorResponseDto> getDoctorsByDepartment(Long deptId){
         Department dept = depRepo.findById(deptId).orElseThrow(() -> new RuntimeException("Department not found"));
-        DepartmentType deptType = DepartmentType.fromDeptName(dept.getDeptName());
-        return getDoctorsByDepartmentName(deptType);
+        return getDoctorsByDepartmentName(dept.getDeptName());
     }
 
     @Override
-    public List<DoctorResponseDto> getDoctorsByDepartmentName(DepartmentType dept){
-        List<Doctor> docs = docRepo.findDoctorsByDepartmentName(dept.getDeptName());
+    public List<DoctorResponseDto> getDoctorsByDepartmentName(String deptName){
+        List<Doctor> docs = docRepo.findDoctorsByDepartmentName(deptName);
         return docs.stream().map((doc) -> toDto(doc)).toList();
     }
 
