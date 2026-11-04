@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
+import com.example.hsp_mgmt.model.enums.Gender;
 
 public class DoctorResponseDto {
 
@@ -20,6 +21,7 @@ public class DoctorResponseDto {
     private LocalDate joinDate;
     private BigDecimal consultationFee;
     private EmploymentStatus status;
+    private Gender gender;
 
 
     public Long getDoctorId() {
@@ -101,6 +103,13 @@ public class DoctorResponseDto {
         this.status = status;
     }
 
+    public Gender getGender(){
+        return this.gender;
+    }
+
+    public void setGender(Gender gender){
+        this.gender = gender;
+    }
     
 }
 
