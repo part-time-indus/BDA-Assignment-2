@@ -46,7 +46,7 @@ public interface DoctorService {
 
     DoctorResponseDto updateConsultationFee(Long doctorId, BigDecimal fee);
 
-    DoctorResponseDto changeDoctorDepartment(Long doctorId, Long newDeptId);
+    DoctorResponseDto updateDoctorDepartment(Long doctorId, Long newDeptId);
 
 
 }

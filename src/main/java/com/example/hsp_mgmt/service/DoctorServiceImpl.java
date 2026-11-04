@@ -9,7 +9,6 @@ import com.example.hsp_mgmt.dto.DoctorRequestDto;
 import com.example.hsp_mgmt.dto.DoctorResponseDto;
 import com.example.hsp_mgmt.model.Department;
 import com.example.hsp_mgmt.model.Doctor;
-import com.example.hsp_mgmt.model.enums.DepartmentType;
 import com.example.hsp_mgmt.model.enums.EmploymentStatus;
 import com.example.hsp_mgmt.repository.DepartmentRepository;
 import com.example.hsp_mgmt.repository.DoctorRepository;
@@ -41,6 +40,7 @@ public class DoctorServiceImpl implements DoctorService {
         resp.setPhone(doc.getPhone());
         resp.setStatus(doc.getStatus());
         resp.setSecialization(doc.getSpecialisation());
+        resp.setGender(doc.getGender());
         return resp;
 
     }
@@ -171,7 +171,7 @@ public class DoctorServiceImpl implements DoctorService {
 
 
     @Override
-    public DoctorResponseDto changeDoctorDepartment(Long doctorId, Long newDeptId){
+    public DoctorResponseDto updateDoctorDepartment(Long doctorId, Long newDeptId){
         Doctor doc = docRepo.findById(doctorId).orElseThrow(() -> new RuntimeException("Doctor not found"));
         Department dep = depRepo.findById(newDeptId).orElseThrow(() -> new RuntimeException("Department not found"));
         doc.setDepartment(dep);
