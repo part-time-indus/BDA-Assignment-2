@@ -54,8 +54,8 @@ public class DepartmentController {
 
     }
 
-    @PostMapping("{deptId}")
-    public String updateForm(@PathVariable Long deptId, @ModelAttribute("departmentForm") DepartmentRequestDto req){
+    @PostMapping("/{deptId}")
+    public String updateDepartment(@PathVariable Long deptId, @ModelAttribute("departmentForm") DepartmentRequestDto req){
         deptService.updateDepartment(deptId, req);
         return "redirect/:departments";
 
@@ -84,16 +84,16 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/search/name")
-    public String searchDepartmentByName(@RequestParam String deptName, Model model){
+    @GetMapping("/name")
+    public String getDepartmentByName(@RequestParam String deptName, Model model){
         DepartmentResponseDto resp = deptService.getDepartmentByName(deptName);
         model.addAttribute("department", resp);
         return "department-detail";
 
     }
 
-    @GetMapping("/search/location")
-    public String searchDepartmentByLocation(@RequestParam String location, Model model){
+    @GetMapping("/location")
+    public String getDepartmentByLocation(@RequestParam String location, Model model){
         List<DepartmentResponseDto> res = deptService.getDepartmentsByLocation(location);
         model.addAttribute("departmentsList", res);
         return "departments-list";
@@ -101,7 +101,7 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/doctors-status")
+    @GetMapping("/doctors/status")
     public String getDepartmentsWithDoctorsByStatus(@RequestParam EmploymentStatus status, Model model){
         List<DepartmentResponseDto> resp = deptService.getDepartmentsWithDoctorsByStatus(status);
         model.addAttribute("departmentsList", resp);
@@ -109,7 +109,7 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/without-doctors")
+    @GetMapping("/doctors/empty")
     public String getDepartmentsWithoutDoctors(Model model){
         List<DepartmentResponseDto> resp = deptService.getDepartmentsWithoutDoctors();
         model.addAttribute("departmentsList", resp);
@@ -117,7 +117,7 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/doctors-specialisation")
+    @GetMapping("/doctors/specialisation")
     public String getDepartmentsBySpecialisation(@RequestParam String specialization, Model model){
         List<DepartmentResponseDto> resp = deptService.getDepartmentsBySpecialisation(specialization);
         model.addAttribute("departmentsList", resp);
