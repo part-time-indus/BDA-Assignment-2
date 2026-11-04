@@ -37,32 +37,32 @@ public class DepartmentController {
     @PostMapping
     public String createDepartment(@ModelAttribute("departmentForm") DepartmentRequestDto req){
         deptService.createDepartment(req);
-        return "redirect/:departments";
+        return "redirect:/departments";
     }
 
     @GetMapping("/edit/{deptId}")
-    public String showUpdateForm(@PathVariable Long deptId, Model model){
+    public String showUpdateForm(@PathVariable("deptId") Long deptId, Model model){
         DepartmentResponseDto currDept = deptService.getDepartmentById(deptId);
         DepartmentRequestDto newDept = new DepartmentRequestDto();
         newDept.setDeptName(currDept.getDeptName());
         newDept.setLocation(currDept.getLocation());
         newDept.setPhone(currDept.getPhone());
 
-        model.addAttribute("departmentFrom", newDept);
+        model.addAttribute("departmentForm", newDept);
         model.addAttribute("deptId", deptId);
         return "update-department";
 
     }
 
     @PostMapping("/{deptId}")
-    public String updateDepartment(@PathVariable Long deptId, @ModelAttribute("departmentForm") DepartmentRequestDto req){
+    public String updateDepartment(@PathVariable("deptId") Long deptId, @ModelAttribute("departmentForm") DepartmentRequestDto req){
         deptService.updateDepartment(deptId, req);
-        return "redirect/:departments";
+        return "redirect:/departments";
 
     }
 
     @GetMapping("/{deptId}")
-    public String getDepartmentById(@PathVariable Long deptId, Model model){
+    public String getDepartmentById(@PathVariable("deptId") Long deptId, Model model){
         DepartmentResponseDto resp = deptService.getDepartmentById(deptId);
         model.addAttribute("department", resp);
         return "department-detail";
@@ -77,15 +77,15 @@ public class DepartmentController {
 
     }
 
-    @GetMapping("/delete/{deptId}")
-    public String deleteDepartment(@PathVariable Long deptId){
+    @PostMapping("/delete/{deptId}")
+    public String deleteDepartment(@PathVariable("deptId") Long deptId){
         deptService.deleteDepartment(deptId);
-        return "/redirect:/departments";
+        return "redirect:/departments";
     }
 
 
     @GetMapping("/name")
-    public String getDepartmentByName(@RequestParam String deptName, Model model){
+    public String getDepartmentByName(@RequestParam("deptName") String deptName, Model model){
         DepartmentResponseDto resp = deptService.getDepartmentByName(deptName);
         model.addAttribute("department", resp);
         return "department-detail";
@@ -93,18 +93,18 @@ public class DepartmentController {
     }
 
     @GetMapping("/location")
-    public String getDepartmentByLocation(@RequestParam String location, Model model){
+    public String getDepartmentByLocation(@RequestParam("location") String location, Model model){
         List<DepartmentResponseDto> res = deptService.getDepartmentsByLocation(location);
-        model.addAttribute("departmentsList", res);
+        model.addAttribute("departmentList", res);
         return "departments-list";
 
     }
 
 
     @GetMapping("/doctors/status")
-    public String getDepartmentsWithDoctorsByStatus(@RequestParam EmploymentStatus status, Model model){
+    public String getDepartmentsWithDoctorsByStatus(@RequestParam("status") EmploymentStatus status, Model model){
         List<DepartmentResponseDto> resp = deptService.getDepartmentsWithDoctorsByStatus(status);
-        model.addAttribute("departmentsList", resp);
+        model.addAttribute("departmentList", resp);
         return "departments-list";
     }
 
@@ -112,27 +112,27 @@ public class DepartmentController {
     @GetMapping("/doctors/empty")
     public String getDepartmentsWithoutDoctors(Model model){
         List<DepartmentResponseDto> resp = deptService.getDepartmentsWithoutDoctors();
-        model.addAttribute("departmentsList", resp);
+        model.addAttribute("departmentList", resp);
         return "departments-list";
     }
 
 
     @GetMapping("/doctors/specialisation")
-    public String getDepartmentsBySpecialisation(@RequestParam String specialization, Model model){
-        List<DepartmentResponseDto> resp = deptService.getDepartmentsBySpecialisation(specialization);
-        model.addAttribute("departmentsList", resp);
+    public String getDepartmentsBySpecialisation(@RequestParam("specialisation") String specialisation, Model model){
+        List<DepartmentResponseDto> resp = deptService.getDepartmentsBySpecialisation(specialisation);
+        model.addAttribute("departmentList", resp);
         return "departments-list";
     }
 
 
     @PostMapping("/{deptId}/location")
-    public String updateDepartmentLocation(@PathVariable Long deptId, @RequestParam String location){
+    public String updateDepartmentLocation(@PathVariable("deptId") Long deptId, @RequestParam("location") String location){
         deptService.updateDepartmentLocation(deptId, location);
         return "redirect:/departments/" + deptId;
     }
 
-    @PostMapping("{deptId}/phone")
-    public String updateDepartmentPhone(@PathVariable Long deptId, @RequestParam String phone){
+    @PostMapping("/{deptId}/phone")
+    public String updateDepartmentPhone(@PathVariable("deptId") Long deptId, @RequestParam("phone") String phone){
         deptService.updateDepartmentPhone(deptId, phone);
         return "redirect:/departments/" + deptId;
     }

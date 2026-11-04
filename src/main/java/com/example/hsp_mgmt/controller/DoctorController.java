@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,13 +62,13 @@ public class DoctorController {
     }
 
     @PostMapping("/{docId}")
-    public String updateDoctor(@PathVariable Long docId, @ModelAttribute("doctorForm") DoctorRequestDto req){
+    public String updateDoctor(@PathVariable("docId") Long docId, @ModelAttribute("doctorForm") DoctorRequestDto req){
         docService.updateDoctor(docId, req);
         return "redirect:/doctors";
     }
 
     @GetMapping("/{docId}")
-    public String getDoctorById(@PathVariable Long docId, Model model){
+    public String getDoctorById(@PathVariable("docId") Long docId, Model model){
         DoctorResponseDto resp = docService.getDoctorById(docId);
         model.addAttribute("doctor",resp);
         return "doctor-detail";
@@ -82,21 +81,21 @@ public class DoctorController {
         return "doctors-list";
     }
 
-    @GetMapping("/delete/{docId}")
-    public String deleteDoctor(@PathVariable Long docId){
+    @PostMapping("/delete/{docId}")
+    public String deleteDoctor(@PathVariable("docId") Long docId){
         docService.deleteDoctor(docId);
-        return "/redirect:/doctors";
+        return "redirect:/doctors";
     }
 
     @GetMapping("/phone")
-    public String getDoctorByPhone(@RequestParam String phone, Model model){
+    public String getDoctorByPhone(@RequestParam("phone") String phone, Model model){
         DoctorResponseDto resp = docService.getDoctorByPhone(phone);
         model.addAttribute("doctor", resp);
         return "doctor-detail";        
     }
 
     @GetMapping("/email")
-    public String getDoctorByEmail(@RequestParam String email, Model model){
+    public String getDoctorByEmail(@RequestParam("email") String email, Model model){
         DoctorResponseDto resp = docService.getDoctorByEmail(email);
         model.addAttribute("doctor", resp);
         return "doctor-detail";
@@ -104,7 +103,7 @@ public class DoctorController {
     }
 
     @GetMapping ("/specialisation")
-    public String getDoctorBySpecialisation(@RequestParam String specialisation, Model model){
+    public String getDoctorBySpecialisation(@RequestParam("specialisation") String specialisation, Model model){
         List<DoctorResponseDto> resp = docService.getDoctorsBySpecialisation(specialisation);
         model.addAttribute("doctorList", resp);
         return "doctors-list";
@@ -114,7 +113,7 @@ public class DoctorController {
     // getDoctorsByDepartment();
 
     @GetMapping("/department/id")
-    public String getDoctorsByDepartment(@RequestParam Long deptId, Model model){
+    public String getDoctorsByDepartment(@RequestParam("deptId") Long deptId, Model model){
         List<DoctorResponseDto> resp = docService.getDoctorsByDepartment(deptId);
         model.addAttribute("doctorList", resp);
         return "doctors-list";
@@ -123,7 +122,7 @@ public class DoctorController {
     // getDoctorsByDepartmentName();
 
     @GetMapping("/department/name")
-    public String getDoctorsByDepartmentName(@RequestParam String deptName, Model model){
+    public String getDoctorsByDepartmentName(@RequestParam("deptName") String deptName, Model model){
         List<DoctorResponseDto> resp = docService.getDoctorsByDepartmentName(deptName);
         model.addAttribute("doctorList", resp);
         return "doctors-list";
@@ -132,7 +131,7 @@ public class DoctorController {
     // getDoctorByDepartmentAndStatus();
 
     @GetMapping("/department/status")
-    public String getDoctorsByDepartmenAndStatus(@RequestParam Long deptId, @RequestParam EmploymentStatus status, Model model){
+    public String getDoctorsByDepartmenAndStatus(@RequestParam("deptId") Long deptId, @RequestParam("status") EmploymentStatus status, Model model){
         List<DoctorResponseDto> resp = docService.getDoctorsByDepartmentAndStatus(deptId, status);
         model.addAttribute("doctorList",  resp);
         return "doctors-list";
@@ -141,24 +140,24 @@ public class DoctorController {
     // updateDoctorStatus();
 
     @PostMapping("/{docId}/status")
-    public String updateDoctorStatus(@PathVariable Long docId, @RequestParam EmploymentStatus status){
+    public String updateDoctorStatus(@PathVariable("docId") Long docId, @RequestParam("status") EmploymentStatus status){
         docService.updateDoctorStatus(docId, status);       
-        return "redirect:/departments";
+        return "redirect:/doctors";
     }
 
     // updateConsultationFee();
 
-    @PostMapping("/{doctorId}/consultationFee")
-    public String updateDoctorConsultationFee(@PathVariable Long docId, @RequestParam BigDecimal consultationFee){
+    @PostMapping("/{docId}/consultationFee")
+    public String updateDoctorConsultationFee(@PathVariable("docId") Long docId, @RequestParam("consultationFee") BigDecimal consultationFee){
         docService.updateConsultationFee(docId, consultationFee);
-        return "redirect:/departments";
+        return "redirect:/doctors";
     }
 
     // changeDoctorDepartment();
-    @PostMapping("/{doctorId}/department")
-    public String updateDoctorDepartment(@PathVariable Long doctId, @RequestParam Long deptId){
-        docService.updateDoctorDepartment(doctId, deptId);
-        return "redirect:/departments";
+    @PostMapping("/{docId}/department")
+    public String updateDoctorDepartment(@PathVariable("docId") Long docId, @RequestParam("deptId") Long deptId){
+        docService.updateDoctorDepartment(docId, deptId);
+        return "redirect:/doctors";
     }
 
 
