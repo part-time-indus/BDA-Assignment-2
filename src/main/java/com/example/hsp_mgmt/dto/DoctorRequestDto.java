@@ -143,7 +143,7 @@ public class DoctorRequestDto {
         return this.status;
     }
 
-    public void setStatu(EmploymentStatus status){
+    public void setStatus(EmploymentStatus status){
         this.status = status;
     }
 
