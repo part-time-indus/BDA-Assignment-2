@@ -56,11 +56,11 @@ public class DoctorServiceImpl implements DoctorService {
         doc.setEmail(request.getEmail());
         doc.setFirstName(request.getFirstName());
         doc.setLastName(request.getLastName());
-        doc.setGender(doc.getGender());
-        doc.setJoinDate(doc.getJoinDate());
-        doc.setPhone(doc.getPhone());
-        doc.setSpecialisation(doc.getSpecialisation());
-        doc.setStatus(doc.getStatus());
+        doc.setGender(request.getGender());
+        doc.setJoinDate(request.getJoinDate());
+        doc.setPhone(request.getPhone());
+        doc.setSpecialisation(request.getSplz());
+        doc.setStatus(request.getStatus());
 
         Doctor docSaved = docRepo.save(doc);
         return toDto(docSaved);
