@@ -68,7 +68,7 @@ public class DoctorResponseDto {
         this.deptId = deptId;
     }
 
-    public String getDeptName(String deptName){
+    public String getDeptName(){
         return this.deptName;
     }
 
@@ -76,7 +76,7 @@ public class DoctorResponseDto {
         this.deptName = deptName;
     }
 
-    public String getDeptLocation(String deptLocation){
+    public String getDeptLocation(){
         return this.deptLocation;
     }
 
