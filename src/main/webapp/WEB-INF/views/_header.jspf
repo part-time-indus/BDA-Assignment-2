@@ -1,0 +1,21 @@
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${pageTitle} - Hospital Admin</title>
+<link rel="stylesheet" href="${ctx}/css/style.css">
+<script>var APP_CTX = '${ctx}';</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <span class="brand"><a href="${ctx}" style="text-decoration:none;">Hospital Admin</a></span>
+    <nav>
+      <a href="${ctx}/doctors" class="${activeNav == 'doctors' ? 'active' : ''}">Doctors</a>
+      <a href="${ctx}/departments" class="${activeNav == 'departments' ? 'active' : ''}">Departments</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">

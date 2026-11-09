@@ -1,0 +1,9 @@
+<label>Department name
+  <input type="text" name="deptName" maxlength="60" required value="<c:out value='${departmentForm.deptName}'/>">
+</label>
+<label>Location
+  <input type="text" name="location" maxlength="60" required value="<c:out value='${departmentForm.location}'/>">
+</label>
+<label>Phone
+  <input type="tel" name="phone" maxlength="15" value="<c:out value='${departmentForm.phone}'/>">
+</label>

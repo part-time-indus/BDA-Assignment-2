@@ -1,0 +1,32 @@
+<div class="grid">
+  <label>First name
+    <input type="text" name="firstName" maxlength="40" required value="<c:out value='${doctorForm.firstName}'/>">
+  </label>
+  <label>Last name
+    <input type="text" name="lastName" maxlength="40" required value="<c:out value='${doctorForm.lastName}'/>">
+  </label>
+  <label>Gender
+    <select name="gender" required data-options="gender" data-placeholder="Select gender" data-selected="${doctorForm.gender}"></select>
+  </label>
+  <label>Phone
+    <input type="tel" name="phone" maxlength="15" required value="<c:out value='${doctorForm.phone}'/>">
+  </label>
+  <label>Email (optional)
+    <input type="email" name="email" maxlength="80" data-blank-null value="<c:out value='${doctorForm.email}'/>">
+  </label>
+  <label>Specialisation
+    <input type="text" name="splz" maxlength="60" required value="<c:out value='${doctorForm.splz}'/>">
+  </label>
+  <label>Department
+    <select name="departmentId" required data-options="department" data-placeholder="Select department" data-selected="${doctorForm.departmentId}"></select>
+  </label>
+  <label>Consultation fee
+    <input type="number" name="consultationFee" min="0" step="0.01" required placeholder="500.00" value="${doctorForm.consultationFee}">
+  </label>
+  <label>Join date
+    <input type="date" name="joinDate" required value="${doctorForm.joinDate}">
+  </label>
+  <label>Status
+    <select name="status" required data-options="status" data-selected="${doctorForm.status}"></select>
+  </label>
+</div>
