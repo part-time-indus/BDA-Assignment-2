@@ -4,10 +4,13 @@ var STATUSES = ['ACTIVE', 'ON_LEAVE', 'RESIGNED'];
 
 var _deptCache = null;
 
+
+// Turns an enum-style value like "ON_LEAVE" into a readable label like "On leave".
 function pretty(v) {
   return String(v).replace(/_/g, ' ').toLowerCase().replace(/^\w/, function (c) { return c.toUpperCase(); });
 }
 
+// Shows a small message at the bottom of the screen (green, or red when type is 'err') for 3 seconds.
 function toast(msg, type) {
   var $t = $('#toast');
   $t.text(msg).toggleClass('err', type === 'err').addClass('show');
@@ -15,6 +18,7 @@ function toast(msg, type) {
   toast._t = setTimeout(function () { $t.removeClass('show'); }, 3000);
 }
 
+// Fills a <select> with options from a list, with an optional placeholder, and preselects a value.
 function fillSelect($sel, values, selected, placeholder) {
   $sel.empty();
   if (placeholder) { $sel.append($('<option>').val('').text(placeholder)); }
@@ -25,7 +29,7 @@ function fillSelect($sel, values, selected, placeholder) {
   if (selected !== undefined && selected !== null && selected !== '') { $sel.val(String(selected)); }
 }
 
-/* Reads the existing /departments page and extracts id + name (no extra backend endpoint needed). */
+// Reads the existing /departments page and extracts id + name (no extra backend endpoint needed). 
 function loadDepartments(cb) {
   if (_deptCache) { cb(_deptCache); return; }
   $.get(APP_CTX + '/departments').done(function (html) {
@@ -39,6 +43,7 @@ function loadDepartments(cb) {
   }).fail(function () { toast('Could not load departments', 'err'); cb([]); });
 }
 
+// Fills select element in scope with genders, statuses or departments.
 function initSelects(scope) {
   var $s = scope ? $(scope) : $(document);
   $s.find('select[data-options]').each(function () {
@@ -52,6 +57,8 @@ function initSelects(scope) {
   });
 }
 
+
+// Replaces department IDs in the doctor table with department names.
 function fillDeptNames() {
   var $cells = $('.dept-cell');
   if (!$cells.length) { return; }
@@ -65,7 +72,7 @@ function fillDeptNames() {
   });
 }
 
-/* Fetches a list URL with AJAX and swaps only the <tbody> of the given table. */
+// Fetches a list URL with AJAX and swaps only the <tbody> of the given table. 
 function loadTable(url, tableSel) {
   $.get(url).done(function (html) {
     var $d = $('<div>').append($.parseHTML(html));
@@ -96,7 +103,7 @@ $(document).on('submit', 'form.js-form', function (e) {
   }).always(function () { $btn.prop('disabled', false); });
 });
 
-/* Delete buttons: <button class="js-delete" data-url="/doctors/delete/5" data-name="..." data-warn="..."> */
+// Delete buttons 
 $(document).on('click', '.js-delete', function () {
   var $b = $(this);
   var msg = 'Delete ' + $b.attr('data-name') + '?';
