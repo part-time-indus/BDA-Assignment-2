@@ -33,7 +33,7 @@ public class DoctorRequestDto {
     private String email;
 
     @NotBlank(message = "Specialisation is required")
-    @Size(max = 80, message = "Specialisation should not exceed 80 characters")
+    @Size(max = 60, message = "Specialisation should not exceed 80 characters")
     private String splz;
 
     @NotNull(message = "Department ID is required")
