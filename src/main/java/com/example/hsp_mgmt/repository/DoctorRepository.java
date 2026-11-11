@@ -44,7 +44,7 @@ List<Doctor> findAllDoctorsWithDepartment();
 
 // Get list of doctors from a particular department using department name
 
-@Query("SELECT d FROM Doctor d WHERE d.department = :deptName")
+@Query("SELECT d FROM Doctor d WHERE d.department.deptName = :deptName")
 List<Doctor> findDoctorsByDepartmentName(@Param("deptName")String deptName);
 
 

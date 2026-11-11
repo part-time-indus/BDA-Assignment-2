@@ -33,7 +33,7 @@ List<Department> findDepartmentsBySpecialisation(String splz);
 
 // list departments with no doctor
 
-@Query("SELECT dep FROM Department dep WHERE dep.doctors IS NULL")
+@Query("SELECT dep FROM Department dep WHERE dep.doctors IS EMPTY")
 List<Department> findDepartmentsWithoutDoctors();
 
 // update department location
