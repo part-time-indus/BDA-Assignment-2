@@ -1,6 +1,6 @@
 
 var GENDERS  = ['MALE', 'FEMALE', 'OTHER'];
-var STATUSES = ['ACTIVE', 'ON_LEAVE', 'RESIGNED'];
+var STATUSES = ['ACTIVE', 'ONLEAVE', 'RESIGNED'];
 
 var _deptCache = null;
 
