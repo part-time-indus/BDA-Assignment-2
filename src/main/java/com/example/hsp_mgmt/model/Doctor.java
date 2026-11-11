@@ -28,7 +28,7 @@ import jakarta.validation.constraints.Size;
 
 
 @Entity 
-@Table(name = "doctor", options = "Engine=InnoDB",
+@Table(name = "doctor" ,
        check = @CheckConstraint(name = "chk_doctor_fee", constraint = "consultation_fee >= 0")
 )
 public class Doctor {
